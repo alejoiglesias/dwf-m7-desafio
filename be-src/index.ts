@@ -115,8 +115,6 @@ app.put("/api/auth/password", async (req, res) => {
   const { token } = req.query;
   const { password } = req.body;
 
-  console.log(token);
-
   try {
     const userId = verifyToken(token as string);
     await changePassword({ userId, password });
