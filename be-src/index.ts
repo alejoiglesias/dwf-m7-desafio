@@ -293,7 +293,7 @@ app.post("/api/report", async (req, res) => {
       email,
     });
 
-    res.status(200).json(data);
+    res.status(200).json({ message: "Reporte enviado." });
   } catch (error) {
     res.status(error.statusCode || 500).json({ error: error.message });
   }
