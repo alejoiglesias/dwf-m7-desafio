@@ -19,16 +19,26 @@ export async function sendRecoveryPasswordEmail({ email, token }) {
   });
 }
 
-export async function sendReportEmail({ name, phone, message, email }) {
+export async function sendReportEmail({
+  name,
+  phone,
+  message,
+  petName,
+  email,
+}) {
   return resend.emails.send({
     from: "Pet Finder <contacto@alejoiglesias.dev>",
     to: email,
-    subject: "Reporte de mascota perdida",
+    subject: "Reporte de mascota",
     html: `
-        <h1>Reporte de mascota perdida</h1>
-        <p>Hemos recibido un reporte de mascota perdida.</p>
-        <p>Nombre: ${name}</p>
-        <p>Teléfono: ${phone}</p>
-        <p>Mensaje: ${message}</p>`,
+      <h1>Reporte de mascota</h1>
+      <p>El usuario ${name} ha reportado la mascota ${petName}.</p>
+      <p>Información de contacto:</p>
+      <ul>
+        <li>Nombre: ${name}</li>
+        <li>Teléfono: ${phone}</li>
+        <li>Mensaje: ${message}</li>
+      </ul>
+    `,
   });
 }

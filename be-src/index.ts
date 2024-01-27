@@ -279,13 +279,20 @@ app.get("/api/pets/around", async (req, res) => {
 });
 
 app.post("/api/report", async (req, res) => {
-  const { name, phone, message, userId } = req.body;
+  const { name, phone, message, petName, userId } = req.body;
 
   try {
     const user = await getUser({ userId });
     const email = user.dataValues.email;
 
-    const data = await sendReportEmail({ name, phone, message, email });
+    const data = await sendReportEmail({
+      name,
+      phone,
+      message,
+      petName,
+      email,
+    });
+
     res.status(200).json(data);
   } catch (error) {
     res.status(error.statusCode || 500).json({ error: error.message });

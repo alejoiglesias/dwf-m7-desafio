@@ -152,6 +152,7 @@ class CustomReport extends HTMLElement {
 
     const currentState = state.getState();
     const userId = currentState.pet.userId;
+    const petName = currentState.pet.name;
 
     const formData = new FormData(event.target as HTMLFormElement);
     const name = formData.get("name") as string;
@@ -163,6 +164,7 @@ class CustomReport extends HTMLElement {
         name,
         phone,
         message,
+        petName,
         userId,
       });
 

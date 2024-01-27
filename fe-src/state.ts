@@ -351,13 +351,13 @@ export const state = {
     }
   },
 
-  async sendReport({ name, phone, message, userId }) {
+  async sendReport({ name, phone, message, petName, userId }) {
     const response = await fetch(`${process.env.BASE_URL}/api/report`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, phone, message, userId }),
+      body: JSON.stringify({ name, phone, message, petName, userId }),
     });
 
     const data = await response.json();
